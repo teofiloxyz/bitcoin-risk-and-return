@@ -1,7 +1,7 @@
 # Bitcoin Risk and Return 🎲
 
 ## Introduction
-**Bitcoin Risk and Return** is a financial data analysis showcase using Jupyter Notebook.
+**Bitcoin Risk and Return** is a financial data analysis showcase of bitcoin using Jupyter Notebook, highlighting its risk and return dynamics. Bitcoin was chosen for its market maturity and widespread popularity as a cryptocurrency.
 
 
 ## Tools Used
@@ -14,12 +14,24 @@
 
 
 ## Analysis Overview
-... 
+This project presents a brief overview of bitcoin's price evolution, emphasizing key market cycles, trends, and seasonal patterns. The focus then shifts to an in-depth analysis of returns and volatility, comparing the cryptocurrency with other major assets, alongside an evaluation of important risk metrics.
 For detailed information about the datasets, check it [here](/data/README.md).
 
 
 ### Table of Contents
-- ...
+- [Bitcoin Price](#BTC_price)
+    - [Major Market Cycles](#BTC_cycles)
+    - [STL Decomposition](#BTC_decomposition)
+- [Bitcoin Returns](#BTC_returns)
+    - [Year-over-Year Returns](#BTC_YoY_returns)
+    - [Before vs. Since 2014](#BTC_price_2014)
+    - [Price vs. Returns](#BTC_price_vs_returns)
+- [Bitcoin Volatility](#BTC_vlt)
+    - [Yearly Volatility](#BTC_yearly_vlt)
+    - [Price vs. Volatility](#BTC_price_vs_vlt)
+    - [Volatility vs. Returns](#BTC_vlt_vs_return)
+- [Risk-Adjusted Returns](#BTC_risk_adjusted)
+- [Value at Risk and Expected Shortfall](#BTC_var)
 
 <br> <!-- Line break -->
 
@@ -44,7 +56,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Following a sharp collapse in 2022, bitcoin rebounded quickly, reaching a new all-time high of around $72.4k in March 2024.
 - Since the first entry, bitcoin's price has skyrocketed by nearly 126,245,855%, meaning its initial value has multiplied by about 1,262,460 times.
 
-*For more details about this section, check the respective [Notebook](/notebooks/1_BTC_price.ipynb).*
+<br> <!-- Line break -->
 
 
 ### Major Market Cycles of Bitcoin Over Time 🔄 <a name = "BTC_cycles"></a>
@@ -59,8 +71,10 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Throughout the years, both bull and bear markets have become less intense, especially the bull phases, reflecting a gradual loss of momentum.
 - Although the last surge was weaker compared to previous cycles, it still showed a remarkable gain of approximately 1,980%, achieved over nearly 3 years.
 
+<br> <!-- Line break -->
 
-### STL Decomposition (Trend, Seasonality, and Residuals) 📈
+
+### STL Decomposition (Trend, Seasonality, and Residuals) 📈 <a name = "BTC_decomposition"></a>
 #### Trend Analysis
 ![Bitcoin trend chart](/images/1_BTC_trend.png)
 *Line chart of the trend component of the historical price of bitcoin, with a logarithmic scale on the y-axis.*
@@ -80,8 +94,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - It typically peaks at the beginning of spring.
 - Following this peak, the price generally declines, reaching its lowest point by the end of summer.
 
+*For more details about this section, check the respective [Notebook](/notebooks/1_BTC_price.ipynb).*
 
-### Bitcoin Returns Over Time 💰
+<br> <!-- Line break -->
+
+
+### Bitcoin Returns Over Time 💰 <a name = "BTC_returns"></a>
 ![Bitcoin returns chart](/images/2_BTC_returns.png)
 *Line chart of the historical 90-day and 1-year moving averages of daily returns of bitcoin.*
 
@@ -116,7 +134,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - The skewness, being close to zero, suggests that the distribution of returns is nearly balanced between gains and losses.
 - However, the extremely high kurtosis indicates that extreme returns, far beyond what would be expected in a normal distribution, are more frequent.
 
-##### Distribution of Yearly Rolling Returns
+#### Distribution of Yearly Rolling Returns
 ![Bitcoin yearly rolling returns distribution chart](/images/2_BTC_returns_y_rol_dist.png)
 *Histogram chart of the distribution of yearly rolling returns of bitcoin.*
 
@@ -132,10 +150,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - An increase in positive skew suggests that large positive returns are more common in yearly returns compared to daily ones.
 - While still positive, the significantly lower kurtosis shows a reduction in extreme outliers when compared to the daily return distribution.
 
+<br> <!-- Line break -->
 
-### Bitcoin Year-over-Year Returns Over Time 📊
+
+### Bitcoin Year-over-Year Returns Over Time 📊 <a name = "BTC_YoY_returns"></a>
 ![Bitcoin YoY returns chart](/images/2_BTC_YoY_returns.png)
-*Bar chart of the historical year-over-year returns of bitcoin.*
+*Bar chart of the historical year-over-year returns of bitcoin, with a symmetrical logarithmic scale on the y-axis.*
 
 **Key takeaways:**
 - Over the past 15 years (assuming 2024 will be positive), only 3 years have ended with negative returns.
@@ -146,10 +166,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - This could be attributed to bitcoin's higher market capitalization and increased liquidity, making it harder for single events or trades to trigger large price movements.
 - Another factor may be the rise of ethereum, launched in mid-2015. Its growing popularity, alongside the emergence of other altcoins, has likely diverted attention and capital from bitcoin.
 
+<br> <!-- Line break -->
 
-### Returns Before vs. Since 2014 🍕
+
+### Returns Before vs. Since 2014 🍕 <a name = "BTC_price_2014"></a>
 ![Bitcoin price 2014 chart](/images/2_BTC_price_2014.png)
-*Line chart comparing the bitcoin price evolution before vs. since 2014 starting at a base 100.*
+*Line chart comparing the bitcoin price evolution before vs. since 2014 starting at a base 100, with a logarithmic scale on the y-axis.*
 
 |                        | Number of days | Final price (base 100) | Cumulative returns |
 | ---------------------- | -------------- | ---------------------- | ------------------ |
@@ -181,18 +203,24 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Both periods show negative skewness, though it is more pronounced after 2014, suggesting a stronger tendency for more frequent negative returns in recent years.
 - Kurtosis has decreased notably, meaning there are fewer extreme outliers since 2014, although the market still sees occasional sharp movements.
 
+<br> <!-- Line break -->
 
-### Price vs. Returns 🌀
+
+### Price vs. Returns 🌀 <a name = "BTC_price_vs_returns"></a>
 ![Bitcoin price vs returns chart](/images/2_BTC_price_vs_returns.png)
-*Scatter plot chart comparing the historical 90-day average price vs. 90-day average daily returns.*
+*Scatter plot chart comparing the historical 90-day average price vs. 90-day average daily returns, with a logarithmic scale on the x-axis.*
 
 **Key takeaways:**
 - Before bitcoin's price reaches 1,000, the returns are more dispersed from zero but tend to skew positively.
 - After crossing the 1,000 mark, returns become more stable, staying within the range of ±0.01.
 - When comparing price (or market cap) with returns, there is a weak negative correlation of -0.16, much weaker than what was expected.
 
+*For more details about this section, check the respective [Notebook](/notebooks/2_BTC_returns.ipynb).*
 
-### Bitcoin Volatility Over Time 🎢
+<br> <!-- Line break -->
+
+
+### Bitcoin Volatility Over Time 🎢 <a name = "BTC_vlt"></a>
 ![Bitcoin volatility chart](/images/3.1_BTC_vlt.png)
 *Line chart of the historical 90-day and 1-year volatility of the price of bitcoin.*
 
@@ -215,8 +243,10 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Crude oil experienced an enormous volatility spike during this period, while US 10-year bonds also saw a substantial increase, both surpassing bitcoin's volatility for that year.
 - In recent years, the cryptocurrency continues to lead in volatility, though it is now much closer to other volatile assets like crude oil.
 
+<br> <!-- Line break -->
 
-### Bitcoin Yearly Volatility Over Time 📊
+
+### Bitcoin Yearly Volatility Over Time 📊 <a name = "BTC_yearly_vlt"></a>
 ![Bitcoin yearly volatility chart](/images/3.1_BTC_yearly_vlt.png)
 *Bar chart of the historical yearly volatility of the price of bitcoin.*
 
@@ -227,10 +257,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - The most volatile year was 2010, while 2023 was the least volatile.
 - Volatility data for 2010 and 2024 are estimates, as these years are incomplete and were annualized.
 
+<br> <!-- Line break -->
 
-### Price vs. Volatility 📉
+
+### Price vs. Volatility 📉 <a name = "BTC_price_vs_vlt"></a>
 ![Bitcoin price vs volatility chart](/images/3.1_BTC_price_vs_vlt.png)
-*Scatter plot chart comparing the historical 90-day average price vs. 90-day price volatility.*
+*Scatter plot chart comparing the historical 90-day average price vs. 90-day price volatility, with a logarithmic scale on the x-axis.*
 
 **Key takeaways:**
 - Comparing price with volatility reveals a shift in the landscape, as anticipated.
@@ -238,8 +270,10 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - This trend becomes particularly noticeable after the price surpasses one thousand, and especially after it exceeds ten thousand, where volatility remains contained below 0.04.
 - The correlation between price and volatility is moderately negative at -0.31.
 
+<br> <!-- Line break -->
 
-### Volatility vs. Returns 💸
+
+### Volatility vs. Returns 💸 <a name = "BTC_vlt_vs_return"></a>
 ![Bitcoin volatility vs returns chart](/images/3.1_BTC_vlt_vs_returns.png)
 *Scatter plot chart comparing the historical 90-day price volatility vs. 90-day average daily returns.*
 
@@ -248,7 +282,6 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - During the experimental phase, we observe distinct periods characterized by both high positive and negative returns.
 - As the years progress, particularly after 2019, volatility significantly decreases, along with absolute returns, resulting in a concentrated cluster that tightens with more recent data.
 - In periods of high volatility, we often see that returns are predominantly positive, as supported by a moderate correlation between volatility and returns of 0.4.
-
 
 #### Comparison of Volatility vs. Returns With Other Assets
 ![Bitcoin volatility vs returns comparison chart](/images/3.1_BTC_vlt_vs_returns_comparison.png)
@@ -260,8 +293,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - The cryptocurrency showcases significantly higher returns, but this comes with much greater volatility. In this case, it paid off the bet on risk.
 - The impact of the 2020 situation positions crude oil poorly within this chart.
 
+*For more details about this section, check the respective [Notebook](/notebooks/3.1_BTC_volatility.ipynb).*
 
-### Bitcoin Yearly Risk-Adjusted Returns Over Time ⚖️
+<br> <!-- Line break -->
+
+
+### Bitcoin Yearly Risk-Adjusted Returns Over Time ⚖️ <a name = "BTC_risk_adjusted"></a>
 #### Sharpe Ratio
 ![Bitcoin yearly Sharpe chart](/images/3.2_BTC_yearly_sharpe.png)
 *Bar chart of the historical yearly Sharpe ratio of bitcoin.*
@@ -287,8 +324,9 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - In 2012, downside volatility was at its lowest, and 2023 also experienced very low downside volatility, pushing these years to 3rd and 5th places, respectively.
 - Ultimately, holding bitcoin for several years increases the likelihood of achieving a positive risk-adjusted return.
 
+<br> <!-- Line break -->
 
-### Value at Risk (VaR) and Expected Shortfall (CVaR) 🚨
+### Value at Risk (VaR) and Expected Shortfall (CVaR) 🚨 <a name = "BTC_var"></a>
 ![Bitcoin var chart](/images/3.2_BTC_var.png)
 *Histogram charts of the distribution of Monte Carlo simulated returns for different timeframes for bitcoin, with 5th and 1st percentiles lines.*
 
@@ -307,9 +345,20 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Investing in bitcoin is very risky over shorter periods like a quarter or a year.
 - However, with a five-year horizon, the risk diminishes a lot, with a 99% chance of retaining at least 96.6% of the investment, and an expected shortfall of 40.6%.
 
+*For more details about this section, check the respective [Notebook](/notebooks/3.2_BTC_extra_risk_metrics.ipynb).*
+
+<br> <!-- Line break -->
+
 
 ### Conclusions
-...
+- Bitcoin is an extraordinary asset that skyrocketed in value in a very short period, experiencing massive rallies and crashes.
+- Its early returns were absolutely exceptional, vastly outperforming traditional assets.
+- As the market expanded, became more liquid, and gained legitimacy, bitcoin's returns became much more moderate, though still higher than traditional assets.
+- This outperformance came with intense volatility, especially during its experimental phase.
+- Like its returns, bitcoin's volatility has decreased as the asset matured, yet it still surpasses traditional assets, maintaining its classic "high risk, high reward" dynamic.
+- The risk-adjusted returns are impressive, with Sharpe ratios often exceeding 1 by a large margin during its positive years, well above the norm for traditional assets.
+- Value at risk and expected shortfall show that the cryptocurrency is extremely risky over short-term horizons like a quarter or a year.
+- However, over a five-year horizon, bitcoin’s risk decreases significantly, making long-term investment a very viable option, provided the blockchain remains secure and the market continues to take this asset seriously.
 
 
 ## Disclaimer
