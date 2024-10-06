@@ -1,7 +1,7 @@
 # Bitcoin Risk and Return 🎲
 
 ## Introduction
-**Bitcoin Risk and Return** is a financial data analysis showcase of bitcoin using Jupyter Notebook, highlighting its risk and return dynamics. Bitcoin was chosen for its market maturity and widespread popularity as a cryptocurrency.
+**Bitcoin Risk and Return** is a financial data analysis showcase using Jupyter Notebook, focusing on the cryptocurrency's risk and return dynamics. Bitcoin was chosen for its maturity and widespread popularity.
 
 
 ## Tools Used
@@ -30,8 +30,9 @@ For detailed information about the datasets, check it [here](/data/README.md).
     - [Yearly Volatility](#BTC_yearly_vlt)
     - [Price vs. Volatility](#BTC_price_vs_vlt)
     - [Volatility vs. Returns](#BTC_vlt_vs_return)
-- [Risk-Adjusted Returns](#BTC_risk_adjusted)
-- [Value at Risk and Expected Shortfall](#BTC_var)
+- [Bitcoin Extra Risk Metrics](#BTC_risk_adjusted)
+    - [Risk-Adjusted Returns](#BTC_risk_adjusted)
+    - [Value at Risk and Expected Shortfall](#BTC_var)
 
 <br> <!-- Line break -->
 
@@ -285,7 +286,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 
 #### Comparison of Volatility vs. Returns With Other Assets
 ![Bitcoin volatility vs returns comparison chart](/images/3.1_BTC_vlt_vs_returns_comparison.png)
-*Scatter plot chart comparing the average daily returns vs. daily price volatility of bitcoin with other major assets.*
+*Scatter plot chart comparing the average daily returns vs. daily price volatility across bitcoin and other major assets.*
 
 **Key takeaways:**
 - This chart illustrates the comparison of major assets concerning their volatility and returns since 2010.
