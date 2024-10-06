@@ -201,7 +201,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Before 2014, bitcoin's average return was much higher compared to the post-2014 period, indicating greater profitability in earlier years. The median also dropped and became equal to the mean, suggesting that returns have become more symmetric, with fewer positive outliers.
 - Since 2014, the standard deviation has dropped significantly, pointing to reduced price volatility in recent years.
 - The range of returns has narrowed, with smaller extremes in both minimum and maximum values.
-- Both periods show negative skewness, though it is more pronounced after 2014, suggesting a stronger tendency for more frequent negative returns in recent years.
+- Both periods show negative skewness, though it is more pronounced after 2014, suggesting a stronger tendency for more frequent returns below the mean in recent years.
 - Kurtosis has decreased notably, meaning there are fewer extreme outliers since 2014, although the market still sees occasional sharp movements.
 
 <br> <!-- Line break -->
@@ -229,7 +229,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - The five biggest daily price changes occurred in 2010 and 2011, marking bitcoin’s early years as a period of intense volatility.
 - From 2010 until early 2017, average volatility decreased by about 80%, reflecting the market’s maturation. However, it still experiences occasional spikes.
 - After the 2017 spike, bitcoin resumed its downward trend in 2018.
-- In recent years, bitcoin has become more stable.
+- In recent years, bitcoin has become consistently more stable.
 - The decrease in volatility over time is closely linked to the factors already mentioned like a larger market cap, increased liquidity, and also institutional involvement.
 - This curve highlights bitcoin's evolution from a speculative asset to a more established component of the global financial system.
 
@@ -254,7 +254,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 **Key takeaways:**
 - The first four years were the most speculative, marking bitcoin's experimental phase.
 - From 2014 onward, volatility began to stabilize, with noticeable spikes during rallies and crashes.
-- Since 2017, there has been a clear downtrend in volatility, reflecting gradual maturity of this asset, as seen in the line chart.
+- Since 2017, there has been a clear downtrend in volatility, reflecting gradual maturity of this asset, as seen in the line chart before.
 - The most volatile year was 2010, while 2023 was the least volatile.
 - Volatility data for 2010 and 2024 are estimates, as these years are incomplete and were annualized.
 
@@ -305,15 +305,14 @@ For detailed information about the datasets, check it [here](/data/README.md).
 *Bar chart of the historical yearly Sharpe ratio of bitcoin.*
 
 **Key takeaways:**
-- Adjusting returns for risk changes the yearly rankings but preserves the positive or negative sign.
+- Adjusting returns for risk changes the yearly rankings while preserving their sign.
 - The years marked by major rallies have the best Sharpe ratio.
 - Although 2017 ranks third in returns, it has the highest Sharpe ratio, slightly surpassing the "golden year".
-- During bitcoin’s experimental/speculative era, returns were so high that the Sharpe ratio remained significantly elevated despite extreme volatility.
+- During bitcoin’s experimental era, returns were so high that the Sharpe ratio remained significantly elevated despite extreme volatility.
 - Typically, a Sharpe ratio above 1 is considered good, but most positive years for bitcoin have exceptionally high values.
-- A negative Sharpe ratio implies that the risk-free asset would have outperformed bitcoin in that year.
-- Only the years with negative returns had lower performance than the risk-free rate, resulting in negative Sharpe ratios, with 2022 having the worst.
+- A negative Sharpe ratio means bitcoin underperformed the risk-free asset, which only happened in years when the cryptocurrency had negative returns.
 - Generally, the more negative the Sharpe ratio, the worse the performance.
-- However, extreme volatility can soften the impact of a negative ratio, as seen in 2018, where volatility was higher than in 2022 but the gap between returns and the risk-free rate was larger.
+- However, extreme volatility can soften the impact of a negative ratio, as seen in 2018, where volatility was higher than in 2022 but the gap between returns and the average risk-free rate was larger.
 
 #### Sortino Ratio
 ![Bitcoin yearly Sortino chart](/images/3.2_BTC_yearly_sortino.png)
@@ -329,7 +328,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 
 ### Value at Risk (VaR) and Expected Shortfall (CVaR) 🚨 <a name = "BTC_var"></a>
 ![Bitcoin var chart](/images/3.2_BTC_var.png)
-*Histogram charts of the distribution of Monte Carlo simulated returns for different timeframes for bitcoin, with 5th and 1st percentiles lines.*
+*Histogram charts of the distribution of Monte Carlo simulated returns for bitcoin over 1-quarter (not "quater"), 1-year, and 5-year timeframes, with 1st and 5th percentile lines.*
 
 | Time Horizon | VaR (95%) | CVaR (95%) | VaR (99%) | CVaR (99%) |
 | ------------ | --------- | ---------- | --------- | ---------- |
@@ -338,13 +337,12 @@ For detailed information about the datasets, check it [here](/data/README.md).
 | 1825 days    | -0.699    | -0.259     | 0.034     | 0.406      |
 
 **Key takeaways:**
-- Risk should be assessed not only in terms of volatility but also by considering potential losses.
-- As the time horizon extends from a quarter to a year, the potential losses increase slightly.
-- However, when the time horizon stretches from one year to five years, the potential losses decrease significantly.
-- The Monte Carlo method, using data since 2019 (a year when the asset is considered mature), was used for these calculations.
+- Risk should be assessed not just by volatility but also by potential losses.
+- While potential losses increase slightly from a quarter to a year, they decrease significantly over a five-year horizon.
+- These calculations were done using the Monte Carlo method with data from 2019, when the asset was considered more mature.
 - For example, after 90 days, there is a 95% chance that the investment will retain at least 73.6% of its original value.
 - Investing in bitcoin is very risky over shorter periods like a quarter or a year.
-- However, with a five-year horizon, the risk diminishes a lot, with a 99% chance of retaining at least 96.6% of the investment, and an expected shortfall of 40.6%.
+- However, with a five-year horizon, the risk significantly reduces, with a 99% chance of retaining at least 96.6% of the investment, and an expected shortfall of 40.6%.
 
 *For more details about this section, check the respective [Notebook](/notebooks/3.2_BTC_extra_risk_metrics.ipynb).*
 
