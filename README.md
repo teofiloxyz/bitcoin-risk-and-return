@@ -11,6 +11,7 @@
 - **Matplotlib and Seaborn:** For creating charts.
 - **NumPy and SciPy:** For numerical operations.
 - **Statsmodels:** For time series decomposition.
+- **Tensorflow:** For building and training neural network models.
 
 
 ## Analysis Overview
@@ -33,6 +34,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - [Bitcoin Extra Risk Metrics](#BTC_risk_adjusted)
     - [Risk-Adjusted Returns](#BTC_risk_adjusted)
     - [Value at Risk and Expected Shortfall](#BTC_var)
+    - [VaR and CVaR with Machine Learning](#BTC_ml_var)
 
 <br> <!-- Line break -->
 
@@ -328,7 +330,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 
 ### Value at Risk (VaR) and Expected Shortfall (CVaR) 🚨 <a name = "BTC_var"></a>
 ![Bitcoin var chart](/images/3.2_BTC_var.png)
-*Histogram charts of the distribution of Monte Carlo simulated returns for bitcoin over 1-quarter (not "quater"), 1-year, and 5-year timeframes, with 1st and 5th percentile lines.*
+*Histogram charts of the distribution of Monte Carlo simulated log returns for bitcoin over 1-quarter (not "quater"), 1-year, and 5-year timeframes, with 1st and 5th percentile lines.*
 
 | Time Horizon | VaR (95%) | CVaR (95%) | VaR (99%) | CVaR (99%) |
 | ------------ | --------- | ---------- | --------- | ---------- |
@@ -340,7 +342,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Risk should be assessed not just by volatility but also by potential losses.
 - While potential losses increase slightly from a quarter to a year, they decrease significantly over a five-year horizon.
 - These calculations were done using the Monte Carlo method with data from 2019, when the asset was considered more mature.
-- For example, after 90 days, there is a 95% chance that the investment will retain at least 73.6% of its original value.
+- For example, after 90 days, there is a 95% chance that the investment will retain at least 73.6% (69.8% arithmetic) of its original value.
 - Investing in bitcoin is very risky over shorter periods like a quarter or a year.
 - However, with a five-year horizon, the risk significantly reduces, with a 99% chance of retaining at least 96.6% of the investment, and an expected shortfall of 40.6%.
 
@@ -348,6 +350,28 @@ For detailed information about the datasets, check it [here](/data/README.md).
 
 <br> <!-- Line break -->
 
+### Experiment: Estimating VaR and CVaR with Machine Learning 🤖 <a name = "BTC_ml_var"></a>
+Our analysis has shown that Bitcoin's returns express non-stationarity, with both mean and volatility changing significantly over time. To forecast these parameters, we employ LSTM models. The predictions feed into Monte Carlo simulations, where each time horizon leverages its specific mean and standard deviation to get a more precise risk assessment.
+
+![Bitcoin ml var chart](/images/3.3_BTC_ml_var.png)
+*Histogram charts of the distribution of Monte Carlo simulated log returns for bitcoin over 1-quarter, 1-year, and 5-year timeframes, with 1st and 5th percentile lines.*
+
+| Time Horizon | VaR (95%) | CVaR (95%) | VaR (99%) | CVaR (99%) |
+| ------------ | --------- | ---------- | --------- | ---------- |
+| 90 days      | 0.433     | 0.560      | 0.641     | 0.733      |
+| 365 days     | 0.653     | 0.918      | 1.082     | 1.304      |
+| 1825 days    | 0.192     | 0.691      | 0.994     | 1.371      | 
+
+**Key takeaways:**
+- Over 90 days, there’s a 95% chance of retaining at least 43.3% (54.1% arithmetic) of the investment, but the average loss in extreme cases (CVaR) is 56.0%.
+- At one year, the 95% VaR improves to 65.3% (92.1% arithmetic), while CVaR rises to 91.8%.
+- Over five years, the risk significantly reduces at the 95% level, with a VaR of 19.2% (21.2% arithmetic), but shows minimal improvement at 99% confidence.
+- Both methods agree that Bitcoin investments are highly risky over short periods. However, this analysis shows significantly greater potential losses, particularly for medium and long-term horizons.
+- Moreover, while both methods display reduced risk at longer horizons, this analysis highlights much higher tail risks, indicating that long-term investment doesn't reduce risk as much as the first method suggests.
+
+*For more details about this section, check the respective [Notebook](/notebooks/3.3_BTC_ML_VaR.ipynb).*
+
+<br> <!-- Line break -->
 
 ### Conclusions
 - Bitcoin is an extraordinary asset that skyrocketed in value in a very short period, experiencing massive rallies and crashes.
@@ -357,7 +381,7 @@ For detailed information about the datasets, check it [here](/data/README.md).
 - Like its returns, bitcoin's volatility has decreased as the asset matured, yet it still surpasses traditional assets, maintaining its classic "high risk, high reward" dynamic.
 - The risk-adjusted returns are impressive, with Sharpe ratios often exceeding 1 by a large margin during its positive years, well above the norm for traditional assets.
 - Value at risk and expected shortfall show that the cryptocurrency is extremely risky over short-term horizons like a quarter or a year.
-- However, over a five-year horizon, bitcoin’s risk decreases significantly, making long-term investment a very viable option, provided the blockchain remains secure and the market continues to take this asset seriously.
+- However, over a five-year horizon, Bitcoin’s risk decreases, provided the blockchain remains secure and the market continues to take this asset seriously, though elevated tail risks still pose challenges.
 
 
 ## Disclaimer
